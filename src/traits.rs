@@ -8,7 +8,7 @@ use serde::{Deserialize, Serialize};
 use crate::constants::KEY_LEN;
 
 /// The required interface for structs representing a hasher.
-pub trait Hasher {
+pub trait Hasher: Sync + Send {
     /// The type of hasher.
     type HashType;
     /// Creates a new `HashType`.
@@ -20,7 +20,7 @@ pub trait Hasher {
 }
 
 /// The required interface for structs representing branches in the tree.
-pub trait Branch {
+pub trait Branch: Sync + Send {
     /// Creates a new `Branch`.
     fn new() -> Self;
     /// Gets the count of leaves beneath this node.
@@ -48,7 +48,7 @@ pub trait Branch {
 }
 
 /// The required interface for structs representing leaves in the tree.
-pub trait Leaf {
+pub trait Leaf: Sync + Send {
     /// Creates a new `Leaf` node.
     fn new() -> Self;
     /// Gets the associated key with this node.
@@ -64,7 +64,7 @@ pub trait Leaf {
 }
 
 /// The required interface for structs representing data stored in the tree.
-pub trait Data {
+pub trait Data: Sync + Send {
     /// Creates a new `Data` node.
     fn new() -> Self;
     /// Gets the value for the `Data` node.
@@ -114,7 +114,7 @@ where
 }
 
 /// This trait defines the required interface for connecting a storage mechanism to the `MerkleBIT`.
-pub trait Database {
+pub trait Database: Sync + Send {
     /// The type of node to insert into the database.
     type NodeType;
     /// The type of entry for insertion.  Primarily for convenience and tracking what goes into the database.

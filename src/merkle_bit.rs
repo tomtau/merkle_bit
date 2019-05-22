@@ -54,17 +54,17 @@ where
     /// The maximum depth of the tree.
     depth: usize,
     /// Marker for dealing with `BranchType`.
-    branch: PhantomData<*const BranchType>,
+    branch: PhantomData<BranchType>,
     /// Marker for dealing with `LeafType`.
-    leaf: PhantomData<*const LeafType>,
+    leaf: PhantomData<LeafType>,
     /// Marker for dealing with `DataType`.
-    data: PhantomData<*const DataType>,
+    data: PhantomData<DataType>,
     /// Marker for dealing with `NodeType`.
-    node: PhantomData<*const NodeType>,
+    node: PhantomData<NodeType>,
     /// Marker for dealing with `HasherType`.
-    hasher: PhantomData<*const HasherType>,
+    hasher: PhantomData<HasherType>,
     /// Marker for dealing with `ValueType`.
-    value: PhantomData<*const ValueType>,
+    value: PhantomData<ValueType>,
 }
 
 #[cfg(feature = "use_rayon")]
